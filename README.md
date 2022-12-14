@@ -12,3 +12,8 @@ Precisas ter instalado Node.
 npm install
 npm start
 ```
+
+## Créditos
+
+- [App orixinal](https://gitlab.com/nanuchi/techworld-js-docker-demo-app)
+- [Docker Tutorial for Beginners](https://www.youtube.com/watch?v=3c-iBn73dDE)
