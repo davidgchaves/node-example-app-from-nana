@@ -44,7 +44,7 @@ app.get("/get-profile", (request, response) => {
     if (error) throw error;
 
     // BEWARE!!!
-    const db = client.db(databaseNameWithDockerCompose);
+    const db = client.db(databaseNameWithDocker);
     const myQuery = { userid: 1 };
 
     db.collection("users").findOne(myQuery, (error, result) => {
@@ -63,7 +63,7 @@ app.post("/update-profile", (request, response) => {
     if (error) throw error;
 
     // BEWARE!!!
-    const db = client.db(databaseNameWithDockerCompose);
+    const db = client.db(databaseNameWithDocker);
     userObj["userid"] = 1;
 
     const myQuery = { userid: 1 };
