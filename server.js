@@ -40,7 +40,7 @@ app.get("/profile-picture", (request, response) => {
 });
 
 app.get("/get-profile", (request, response) => {
-  MongoClient.connect(mongoUrlLocal, mongoClientOptions, (error, client) => {
+  MongoClient.connect(mongoUrlDocker, mongoClientOptions, (error, client) => {
     if (error) throw error;
 
     // BEWARE!!!
@@ -59,7 +59,7 @@ app.get("/get-profile", (request, response) => {
 app.post("/update-profile", (request, response) => {
   const userObj = request.body;
 
-  MongoClient.connect(mongoUrlLocal, mongoClientOptions, (error, client) => {
+  MongoClient.connect(mongoUrlDocker, mongoClientOptions, (error, client) => {
     if (error) throw error;
 
     // BEWARE!!!
