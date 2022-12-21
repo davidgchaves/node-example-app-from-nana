@@ -15,3 +15,13 @@ services:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=ada
       - ME_CONFIG_MONGODB_ADMINPASSWORD=lovelace
       - ME_CONFIG_MONGODB_SERVER=mongodb
+  node:
+    image: node
+    working_dir: /usr/app
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./:/usr/app
+    ports:
+      - 3000:3000
+    command: bash -c "npm install && npm start"
