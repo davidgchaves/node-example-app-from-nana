@@ -5,20 +5,15 @@ const MongoClient = require("mongodb").MongoClient;
 const bodyParser = require("body-parser");
 const app = express();
 
-// Use when starting application locally
-const mongoUrlLocal = "mongodb://admin:password@localhost:27017";
-
 // Use when starting application as docker container
-const mongoUrlDocker = "mongodb://admin:password@mongodb";
+const mongoUrlDocker = "mongodb://ada:lovelace@mongodb";
 
 // Pass these options to mongo client connect request to avoid DeprecationWarning
 // for current Server Discovery and Monitoring engine
 const mongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
 
 // Database name in demo with docker: "user-account"
-const databaseNameWithDocker = "user-account";
-// Database name in demo with docker-compose; "my-db"
-const databaseNameWithDockerCompose = "my-db";
+const dbName = "user-account";
 
 app.use(
   bodyParser.urlencoded({
@@ -43,8 +38,7 @@ app.get("/get-profile", (request, response) => {
   MongoClient.connect(mongoUrlDocker, mongoClientOptions, (error, client) => {
     if (error) throw error;
 
-    // BEWARE!!!
-    const db = client.db(databaseNameWithDocker);
+    const db = client.db(dbName);
     const myQuery = { userid: 1 };
 
     db.collection("users").findOne(myQuery, (error, result) => {
@@ -62,8 +56,7 @@ app.post("/update-profile", (request, response) => {
   MongoClient.connect(mongoUrlDocker, mongoClientOptions, (error, client) => {
     if (error) throw error;
 
-    // BEWARE!!!
-    const db = client.db(databaseNameWithDocker);
+    const db = client.db(dbName);
     userObj["userid"] = 1;
 
     const myQuery = { userid: 1 };
