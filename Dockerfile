@@ -8,4 +8,4 @@ COPY . /usr/app
 WORKDIR /usr/app
 
 RUN npm install
-CMD ["npm", "server.js"]
+CMD ["node", "server.js"]
